@@ -1,5 +1,10 @@
 
-require 'test/helper'
+if respond_to? :require_relative, true
+  require_relative 'helper'
+else
+  require 'test/helper'
+end
+
 require 'facebook'
 
 describe "Facebook SDK without an access token" do

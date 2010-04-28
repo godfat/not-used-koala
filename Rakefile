@@ -1,5 +1,5 @@
 
 desc 'test'
 task :test do
-  sh 'bacon -I lib test/*.rb'
+  sh "#{RUBY} -S bacon -I lib test/*.rb"
 end
