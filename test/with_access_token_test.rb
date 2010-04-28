@@ -24,24 +24,24 @@ describe "Facebook SDK with an access token" do
   it "should get public data about a user" do
     result = @graph.get_object("koppel")
     # the results should have an ID and a name, among other things
-    (result["id"] && result["name"]).should != nil
+    (result["id"] && result["name"]).should.not == nil
   end
 
   it "should get private data about a user" do
     result = @graph.get_object("koppel")
     # updated_time should be a pretty fixed test case
-    result["updated_time"].should != nil
+    result["updated_time"].should.not == nil
   end
 
   it "should get public data about a Page" do
     result = @graph.get_object("contextoptional")
     # the results should have an ID and a name, among other things
-    (result["id"] && result["name"]).should != nil
+    (result["id"] && result["name"]).should.not == nil
   end
 
   it "should get data about 'me'" do
     result = @graph.get_object("me")
-    result["updated_time"].should != nil
+    result["updated_time"].should.not == nil
   end
 
   it "should be able to get multiple objects" do
@@ -63,7 +63,7 @@ describe "Facebook SDK with an access token" do
   it "should be able to put an object" do
     result = @graph.put_wall_post("Hello, world, from the test suite!")
     @temporary_object_id = result["id"]
-    @temporary_object_id.should != nil
+    @temporary_object_id.should.not == nil
   end
 
   # DELETE
@@ -78,7 +78,7 @@ describe "Facebook SDK with an access token" do
   it "should be able to post to a feed" do
     result = @graph.put_wall_post("Hello, world, from the test suite again!", {:name => "Context Optional", :link => "http://www.contextoptional.com/"})
     @temporary_object_id = result["id"]
-    @temporary_object_id.should != nil
+    @temporary_object_id.should.not == nil
   end
 
   it "should be able to comment on an object" do
@@ -87,13 +87,14 @@ describe "Facebook SDK with an access token" do
 
     # this will be deleted when the post gets deleted
     comment_result = @graph.put_comment(@temporary_object_id, "it's my comment!")
-    comment_result.should != nil
+    comment_result.should.not == nil
   end
 
   it "should be able to like an object" do
     result = @graph.put_wall_post("Hello, world, from the test suite, testing comments!")
     @temporary_object_id = result["id"]
     like_result = @graph.put_like(@temporary_object_id)
+    true.should == true
   end
 
   # SEARCH

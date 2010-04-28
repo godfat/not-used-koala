@@ -15,7 +15,7 @@ describe "Facebook SDK without an access token" do
   it "should get public data about a user" do
     result = @graph.get_object("koppel")
     # the results should have an ID and a name, among other things
-    (result["id"] && result["name"]).should != nil
+    (result["id"] && result["name"]).should.not == nil
   end
 
   it "should not get private data about a user" do
@@ -28,7 +28,7 @@ describe "Facebook SDK without an access token" do
   it "should get public data about a Page" do
     result = @graph.get_object("contextoptional")
     # the results should have an ID and a name, among other things
-    (result["id"] && result["name"]).should != nil
+    (result["id"] && result["name"]).should.not == nil
   end
 
   it "should not be able to get data about 'me'" do
@@ -37,7 +37,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
   it "should be able to get multiple objects" do
@@ -51,7 +51,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
   it "should be able to access connections from public Pages" do
@@ -65,7 +65,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
   # these are not strictly necessary as the other put methods resolve to put_object, but are here for completeness
@@ -75,7 +75,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
   it "should not be able to comment on an object" do
@@ -85,7 +85,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
   it "should not be able to like an object" do
@@ -94,7 +94,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
 
@@ -106,7 +106,7 @@ describe "Facebook SDK without an access token" do
     rescue Facebook::GraphAPIError => @right_err
     rescue Exception => wrong_err
     end
-    @right_err.should != nil
+    @right_err.should.not == nil
   end
 
   # SEARCH
