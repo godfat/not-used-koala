@@ -4,8 +4,8 @@ class FacebookWithAccessTokenTests < Test::Unit::TestCase
       raise Exception, "Must supply access token to run FacebookWithAccessTokenTests!" unless $access_token
       @graph = $service ? Facebook::GraphAPI.new($access_token, $service) : Facebook::GraphAPI.new($access_token)
     end
-    
-    after :each do 
+
+    after :each do
       # clean up any temporary objects
       if @temporary_object_id
         puts "\nCleaning up temporary object #{@temporary_object_id.to_s}"
@@ -30,17 +30,17 @@ class FacebookWithAccessTokenTests < Test::Unit::TestCase
       # the results should have an ID and a name, among other things
       (result["id"] && result["name"]).should
     end
-  
+
     it "should get data about 'me'" do
       result = @graph.get_object("me")
       result["updated_time"].should
     end
-  
+
     it "should be able to get multiple objects" do
       result = @graph.get_objects(["contextoptional", "naitik"])
       result.length.should == 2
     end
-  
+
     it "should be able to access connections from users" do
       result = @graph.get_connections("lukeshepard", "likes")
       result["data"].length.should > 0
@@ -50,7 +50,7 @@ class FacebookWithAccessTokenTests < Test::Unit::TestCase
       result = @graph.get_connections("contextoptional", "likes")
       result["data"].should be_a(Array)
     end
-    
+
     # PUT
     it "should be able to put an object" do
       result = @graph.put_wall_post("Hello, world, from the test suite!")
@@ -59,7 +59,7 @@ class FacebookWithAccessTokenTests < Test::Unit::TestCase
     end
 
     # DELETE
-    it "should not be able to delete posts" do 
+    it "should not be able to delete posts" do
       result = @graph.put_wall_post("Hello, world, from the test suite delete method!")
       object_id_to_delete = result["id"]
       delete_result = @graph.delete_object(object_id_to_delete)
@@ -76,8 +76,8 @@ class FacebookWithAccessTokenTests < Test::Unit::TestCase
     it "should be able to comment on an object" do
       result = @graph.put_wall_post("Hello, world, from the test suite, testing comments!")
       @temporary_object_id = result["id"]
-      
-      # this will be deleted when the post gets deleted 
+
+      # this will be deleted when the post gets deleted
       comment_result = @graph.put_comment(@temporary_object_id, "it's my comment!")
       comment_result.should_not be_nil
     end
@@ -99,7 +99,7 @@ class FacebookWithAccessTokenTests < Test::Unit::TestCase
     it "should be able to send get and put requests" do
       # to be written
     end
-    
+
   end # describe
 
 end #class
