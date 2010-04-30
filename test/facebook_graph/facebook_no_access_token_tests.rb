@@ -3,7 +3,7 @@ class FacebookNoAccessTokenTests < Test::Unit::TestCase
     before :each do
       @graph = $service ? Facebook::GraphAPI.new(nil, $service) : Facebook::GraphAPI.new
     end
-  
+
     it "should get public data about a user" do
       result = @graph.get_object("koppel")
       # the results should have an ID and a name, among other things
@@ -16,13 +16,13 @@ class FacebookNoAccessTokenTests < Test::Unit::TestCase
       result["updated_time"].should be_nil
     end
 
-  
+
     it "should get public data about a Page" do
       result = @graph.get_object("contextoptional")
       # the results should have an ID and a name, among other things
       (result["id"] && result["name"]).should
     end
-  
+
     it "should not be able to get data about 'me'" do
       begin
         @graph.get_object("me")
@@ -31,12 +31,12 @@ class FacebookNoAccessTokenTests < Test::Unit::TestCase
       end
       @right_err.should_not be_nil
     end
-  
+
     it "should be able to get multiple objects" do
       results = @graph.get_objects(["contextoptional", "naitik"])
       results.length.should == 2
     end
-  
+
     it "shouldn't be able to access connections from users" do
       begin
         @graph.get_connections("lukeshepard", "likes")
@@ -50,7 +50,7 @@ class FacebookNoAccessTokenTests < Test::Unit::TestCase
       result = @graph.get_connections("contextoptional", "likes")
       result["data"].should be_a(Array)
     end
-  
+
     it "should not be able to put an object" do
       begin
         @result = @graph.put_object("lukeshepard", "feed", :message => "Hello, world")
@@ -91,7 +91,7 @@ class FacebookNoAccessTokenTests < Test::Unit::TestCase
 
 
     # DELETE
-    it "should not be able to delete posts" do 
+    it "should not be able to delete posts" do
       begin
         # test post on the Ruby SDK Test application
         @result = @graph.delete_object("115349521819193_113815981982767")
@@ -112,8 +112,8 @@ class FacebookNoAccessTokenTests < Test::Unit::TestCase
     it "should be able to send get-only requests" do
       # to be written
     end
-    
+
   end # describe
 
 end #class
-  
+
