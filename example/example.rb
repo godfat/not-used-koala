@@ -17,8 +17,8 @@ class Example
   end
 
   def self.current_url e
-    "#{e[rack.url_scheme]}://#{e['HTTP_HOST']}#{e['REQUEST_PATH']}" \
-                            "#{e['QUERY_STRING']}"
+    "#{e['rack.url_scheme']}://#{e['HTTP_HOST']}#{e['REQUEST_PATH']}" \
+                              "#{e['QUERY_STRING']}"
   end
 
   def call env
