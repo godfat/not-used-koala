@@ -1,5 +1,5 @@
 
-require_relative 'example'
+require_relative 'example/example'
 
 use Rack::ContentType
 use Rack::ContentLength
