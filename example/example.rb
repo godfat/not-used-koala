@@ -7,6 +7,7 @@ class Example
   end
 
   def self.parse_cookie env
+    return {} unless env['HTTP_COOKIE']
     Rack::Utils.parse_query(env['HTTP_COOKIE'].match(/"(.+?)"/)[1])
   end
 
