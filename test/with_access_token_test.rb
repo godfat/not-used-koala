@@ -5,7 +5,7 @@ else
   require 'test/helper'
 end
 
-require 'facebook'
+require 'facebook_graph'
 
 describe "Facebook SDK with an access token" do
   before do
