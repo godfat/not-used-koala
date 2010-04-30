@@ -1,7 +1,7 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
-    <meta property="og:title" content="example"/>
-    <meta property="og:site_name" content="example site"/>
+    <meta property="og:title" content="<%= title %>"/>
+    <meta property="og:site_name" content="<%= site_name %>"/>
     <meta property="og:image" content=""/>
   </head>
   <body>
@@ -16,7 +16,7 @@
       });
     </script>
     <div><fb:login-button perms="read_friendlists"></fb:login-button></div>
-    <div><fb:like href="http://208.78.98.38:41829/" layout="standard" show_faces="true" width="450" action="like" colorscheme="light"></fb:like></div>
+    <div><fb:like href="<%= link %>" layout="standard" show_faces="true" width="450" action="like" colorscheme="light"></fb:like></div>
     <script>
     FB.api('/me', function(response){
       document.getElementById('name').innerHTML = 'Hi! ' + response.name
