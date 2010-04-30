@@ -6,7 +6,7 @@ require 'rubygems'
 require 'json'
 
 # include default http services
-require 'http_services'
+require 'facebook_graph/http_services'
 
 module Facebook
   # Ruby client library for the Facebook Platform.
