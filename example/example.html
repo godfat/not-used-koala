@@ -15,7 +15,7 @@
         xfbml  : true  // parse XFBML
       });
     </script>
-    <div><fb:login-button perms="read_friendlists"></fb:login-button></div>
+    <div><fb:login-button perms="read_friendlists,email,read_stream,publish_stream,offline_access,status_update,photo_upload,create_event,rsvp_event,sms,video_upload,create_note,share_item"></fb:login-button></div>
     <div><fb:like href="<%= link %>" layout="standard" show_faces="true" width="450" action="like" colorscheme="light"></fb:like></div>
     <script>
     FB.api('/me', function(response){
